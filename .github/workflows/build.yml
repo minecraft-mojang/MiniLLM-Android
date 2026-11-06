@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q MiniLLM-android-project.zip
+      - run: sed -i 's/dataDir/trainDir/g' MiniLLM/app/src/main/java/com/edu/minillm/MainActivity.kt
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
       - run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
